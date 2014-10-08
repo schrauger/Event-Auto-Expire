@@ -64,12 +64,14 @@ class event_auto_expire {
 		 */
 		$args = array(
 			'post_type' => 'events',
+			'posts_per_page' => -1,
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'events_category',
 					'field'    => 'slug',
 					'terms'    => 'expired',
-					'operator' => 'NOT IN'
+					'operator' => 'NOT IN',
+
 				)
 			)
 		);
@@ -83,7 +85,9 @@ class event_auto_expire {
 			$id = get_the_ID();
 
 			$event_date = strtotime( get_field( 'event_date' ) ); // convert date into unix timestamp
+
 			if ( $current_date > $event_date ) {
+
 				// date is in the past. expire the event.
 				wp_set_object_terms( $id, 'expired', 'events_category', true );
 				wp_set_object_terms( $id, 'library-events', 'events_category', true );
