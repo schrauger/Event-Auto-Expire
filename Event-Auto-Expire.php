@@ -92,4 +92,4 @@ class event_auto_expire {
 	}
 }
 
-
+$event_auto_expire_object = new event_auto_expire();
