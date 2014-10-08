@@ -79,7 +79,7 @@ class event_auto_expire {
 
 		// loop through each event and expire as needed
 		while ( $event_list->have_posts() ) {
-			the_post(); // this sets the global variable to the next post and increments the WordPress loop counter
+			$event_list->the_post(); // this sets the global variable to the next post and increments the WordPress loop counter
 			$id = get_the_ID();
 
 			$event_date = strtotime( get_field( 'event_date' ) ); // convert date into unix timestamp
