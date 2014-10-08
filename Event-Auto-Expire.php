@@ -90,7 +90,6 @@ class event_auto_expire {
 
 				// date is in the past. expire the event.
 				wp_set_object_terms( $id, 'expired', 'events_category', true );
-				wp_set_object_terms( $id, 'library-events', 'events_category', true );
 			}
 		}
 	}
